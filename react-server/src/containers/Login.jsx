@@ -12,25 +12,36 @@ const Login = (props) => {
   const handlePassChange = (event) => { dispatch(updatePassword(event.target.value)) }
 
   return (
-    <div>
-      Login
-      <form onSubmit={handleSubmit}>
-        <input
-          value={username}
-          onChange={handleUserChange}
-          type="text"
-          name="username"
-          placeholder="Ingrese su username"
-        />
-        <input
-          value={password}
-          onChange={handlePassChange}
-          type="password"
-          name="password"
-          placeholder="Ingrese su password"
-        />
-        { isFetching ? 'Procesando...' : <input type="submit" value="Login" /> }
-      </form>
+    <div className="container">
+      <div className="header">
+        <h3>TODO list</h3>
+        <form onSubmit={handleSubmit} className="login-form">
+          <div className="row">
+            <div className="three columns" />
+            <div className="six columns">
+              <input
+                value={username}
+                onChange={handleUserChange}
+                type="text"
+                name="username"
+                placeholder="Ingrese su username"
+              />
+              <input
+                value={password}
+                onChange={handlePassChange}
+                type="password"
+                name="password"
+                placeholder="Ingrese su password"
+              />
+              { isFetching ?
+                'Procesando...' :
+                <input className="button-primary" type="submit" value="Login" />
+              }
+            </div>
+            <div className="three columns" />
+          </div>
+        </form>
+      </div>
     </div>
   )
 }
