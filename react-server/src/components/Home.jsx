@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import React from 'react'
 import CreateForm from '../containers/CreateForm'
 import TodoList from '../containers/TodoList'
+import Navigation from './Navigation'
 
-const Home = (props) => (
+export default (props) => (
   <div className="container">
+    <Navigation />
     <div className="header">
       <h2>TODO List</h2>
       <CreateForm />
@@ -13,22 +13,3 @@ const Home = (props) => (
     </div>
   </div>
 )
-/*
-class Home extends Component {
-  static propTypes = {
-    children: PropTypes.node
-  }
-
-  render() {
-    const { children } = this.props
-    return (
-      <div>
-        Home
-        <Link to="/login">Login</Link>
-        {children}
-      </div>
-    )
-  }
-}*/
-
-export default Home
