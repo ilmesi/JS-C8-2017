@@ -3,3 +3,52 @@
 body {
   font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+.container {
+    max-width: 800px;
+}
+
+.header {
+  text-align: center;
+  margin-top: 6rem;
+}
+
+label {
+  text-align: left;
+}
+
+form button {
+  margin-top: 32px;
+}
+
+.row.item {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+}
+
+.row.item:not(.closed):hover {
+  background-color: rgba(0,0,0,0.05);
+  color: rgba(0,0,0,0.5);
+}
+
+.row.item > .columns {
+  text-align: left;
+}
+
+.row.item > .columns.description div {
+  line-height: 40px;
+}
+
+.row.item.closed > .columns.description div {
+  text-decoration: line-through;
+  color: #ccc;
+}
+
+.row.item > .columns.actions {
+  text-align: right;
+}
+
+.row.item > .columns.actions button {
+  margin-bottom: 0;
+}

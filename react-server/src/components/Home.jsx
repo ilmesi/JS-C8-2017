@@ -1,7 +1,19 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
+import CreateForm from '../containers/CreateForm'
+import TodoList from '../containers/TodoList'
 
+const Home = (props) => (
+  <div className="container">
+    <div className="header">
+      <h2>TODO List</h2>
+      <CreateForm />
+      <TodoList />
+    </div>
+  </div>
+)
+/*
 class Home extends Component {
   static propTypes = {
     children: PropTypes.node
@@ -17,6 +29,6 @@ class Home extends Component {
       </div>
     )
   }
-}
+}*/
 
 export default Home

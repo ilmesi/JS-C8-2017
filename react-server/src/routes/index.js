@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router'
 import { Redirect, Switch } from 'react-router-dom'
-import Home from '../containers/Home'
+import Home from '../components/Home'
 import Login from '../containers/Login'
 
 const Routes = (store) => (
