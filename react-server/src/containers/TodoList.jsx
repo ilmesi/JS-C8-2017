@@ -1,24 +1,25 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Item from '../components/Item'
-import { completeTodo } from '../actions/todos'
+import Item from './Item'
+import { loadTodos } from '../actions/todos'
 
-const TodoList = (props) => {
-  const { dispatch, items } = props
-  const onCompleteTodo = (id) => {dispatch(completeTodo(id))}
-  return (
-    <div>
-      {
-        items.map(item => (
-          <Item
-            key={item.id}
-            onCompleteTodo={onCompleteTodo}
-            { ...item }
-          />
-        ))
-      }
-    </div>
-  )
+class TodoList extends Component {
+  componentWillMount() {
+    const { doLoadTodos } = this.props
+    doLoadTodos()
+  }
+  render() {
+    const { items } = this.props
+    return (
+      <div>
+        {
+          items.map(item => (
+            <Item key={item.id} { ...item } />
+          ))
+        }
+      </div>
+    )
+  }
 }
 
 const mapStateToProps = (state) => {
@@ -27,4 +28,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(TodoList);
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    doLoadTodos: () => {dispatch(loadTodos())}
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

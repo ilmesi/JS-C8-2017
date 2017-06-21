@@ -2,11 +2,23 @@ import * as ActionTypes from '../actions/todos'
 
 const initialState = {
   items: [],
-  text: ''
+  text: '',
+  isFetching: false
 }
 
 const todosReducer = (state = initialState, action) => {
   switch (action.type) {
+    case ActionTypes.REQUEST_TODOS:
+      return {
+        ...state,
+        isFetching: true
+      }
+    case ActionTypes.RECEIVE_TODOS:
+      return {
+        ...state,
+        isFetching: false,
+        items: action.items
+      }
     case ActionTypes.UPDATE_TEXT:
       return {
         ...state,
