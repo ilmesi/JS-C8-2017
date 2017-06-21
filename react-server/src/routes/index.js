@@ -3,6 +3,7 @@ import { Route } from 'react-router'
 import { Redirect, Switch } from 'react-router-dom'
 import Home from '../components/Home'
 import Login from '../containers/Login'
+import Logout from '../containers/Logout'
 
 const Routes = (store) => (
   <Switch>
@@ -14,6 +15,7 @@ const Routes = (store) => (
         <Login />
       )
     )} />
+    <Route path="/logout" component={Logout} />
   </Switch>
 )
 

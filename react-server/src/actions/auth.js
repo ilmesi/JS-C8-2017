@@ -4,6 +4,7 @@ export const REQUEST_AUTH = 'REQUEST_AUTH'
 export const RECEIVE_AUTH = 'RECEIVE_AUTH'
 export const UPDATE_USER = 'UPDATE_USER'
 export const UPDATE_PASSWORD = 'UPDATE_PASSWORD'
+export const LOGOUT = 'LOGOUT'
 
 export const requestAuth = () => ({
   type: REQUEST_AUTH
@@ -23,6 +24,15 @@ export const updatePassword = (password) => ({
   type: UPDATE_PASSWORD,
   password
 })
+
+export const doLogout = () => ({
+  type: LOGOUT
+})
+
+export const requestLogout = () => dispatch => {
+  dispatch(doLogout())
+  dispatch(push('/'))
+}
 
 export const auth = (user, password) => dispatch => {
   dispatch(requestAuth())

@@ -30,6 +30,13 @@ const authReducer = (state = initialState, action) => {
         token: action.response.success ? action.response.token : '',
         isFetching: false
       }
+    case ActionTypes.LOGOUT:
+      return {
+        ...state,
+        token: '',
+        username: '',
+        password: ''
+      }
     default:
       return state
   }

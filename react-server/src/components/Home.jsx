@@ -1,7 +1,7 @@
 import React from 'react'
 import CreateForm from '../containers/CreateForm'
 import TodoList from '../containers/TodoList'
-import Navigation from './Navigation'
+import Navigation from '../containers/Navigation'
 
 export default (props) => (
   <div className="container">
