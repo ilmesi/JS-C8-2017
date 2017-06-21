@@ -4,9 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 module.exports = {
-  entry: {
-    app: './src/index.js'
-  },
+  entry: [
+    'webpack-hot-middleware/client',
+    './client/index.js'
+  ],
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js'
@@ -42,11 +43,6 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx']
-  },
-  devServer: {
-    inline: true,
-    hot: true,
-    historyApiFallback: true
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

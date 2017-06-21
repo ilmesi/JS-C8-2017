@@ -1,3 +1,5 @@
+import fetch from 'isomorphic-fetch'
+
 export const UPDATE_TEXT = 'UPDATE_TEXT'
 export const CREATE_TODO = 'CREATE_TODO'
 export const COMPLETE_TODO = 'COMPLETE_TODO'

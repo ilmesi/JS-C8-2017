@@ -1,4 +1,5 @@
 import { push } from 'react-router-redux'
+import fetch from 'isomorphic-fetch'
 
 export const REQUEST_AUTH = 'REQUEST_AUTH'
 export const RECEIVE_AUTH = 'RECEIVE_AUTH'
