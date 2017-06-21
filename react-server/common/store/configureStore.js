@@ -10,7 +10,7 @@ const configureStore = (history, preloadedState) => {
 
   let devTools = []
   if (typeof document !== 'undefined') {
-    devTools = [ window.__REDUX_DEVTOOLS_EXTENSION__() ]
+    devTools = [ window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() ]
   }
 
   const store = createStore(

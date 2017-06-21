@@ -27,7 +27,7 @@ app.use(webpackHotMiddleware(compiler))
 const handleRender = (req, res) => {
   const preloadedState = {}
   const history = createHistory(req.url)
-  const store = configureStore(preloadedState)
+  const store = configureStore(history, preloadedState)
   // Render the component to a string
   const html = renderToString(
     <Root store={store} history={history} />
