@@ -30,15 +30,20 @@ export const receiveTodos = (items) => ({
   items
 })
 
+export const fetchTodos = () => {
+  let url = 'http://localhost:3000/tasks'
+  let options = {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  }
+  return fetch(url, options).then(response => response.json())
+}
 
 export const loadTodos = () => dispatch => {
   dispatch(requestTodos())
-  return fetch('http://localhost:3000/tasks', {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(response => response.json())
+  fetchTodos()
     .then(json => dispatch(receiveTodos(json)))
 }

@@ -1,6 +1,5 @@
 const path = require('path')
 const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 module.exports = {
@@ -46,10 +45,6 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'assets', 'layout.html'),
-      filename: 'index.html'
-    }),
     new ExtractTextPlugin({
       filename: "bundle.css"
     })

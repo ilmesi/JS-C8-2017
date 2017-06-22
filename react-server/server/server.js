@@ -16,8 +16,13 @@ import createHistory from 'history/createMemoryHistory'
 import configureStore from '../common/store/configureStore'
 import Root from '../common/components/Root'
 
+import { fetchTodos } from '../common/actions/todos'
+
 const app = new Express()
 const port = 8080
+
+// Serve static generated files
+app.use(Express.static(path.join(__dirname, '..', 'build')));
 
 // Use this middleware to set up hot module reloading via webpack.
 const compiler = webpack(webpackConfig)
@@ -25,41 +30,21 @@ app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig
 app.use(webpackHotMiddleware(compiler))
 
 const handleRender = (req, res) => {
-  const preloadedState = {}
-  const history = createHistory(req.url)
-  const store = configureStore(history, preloadedState)
-  // Render the component to a string
-  const html = renderToString(
-    <Root store={store} history={history} />
-  )
-  const finalState = store.getState()
-  res.send(renderFullPage(html, finalState))
-  /*
-  fetchCounter(apiResult => {
-    // Read the counter from the request, if provided
-    const params = 0
-    const counter = parseInt(params.counter, 10) || apiResult || 0
-
-    // Compile an initial state
-    const preloadedState = { counter }
-
-    // Create a new Redux store instance
-    const store = configureStore(preloadedState)
-
+  fetchTodos().then(todos => {
+    const preloadedState = {
+      todos: {
+        items: todos
+      }
+    }
+    const history = createHistory(req.url)
+    const store = configureStore(history, preloadedState)
     // Render the component to a string
     const html = renderToString(
-      <Provider store={store}>
-        <App />
-      </Provider>
+      <Root store={store} history={history} />
     )
-
-    // Grab the initial state from our Redux store
     const finalState = store.getState()
-
-    // Send the rendered page back to the client
     res.send(renderFullPage(html, finalState))
   })
-  */
 }
 
 // This is fired every time the server side receives a request
@@ -67,17 +52,19 @@ app.use(handleRender)
 
 const renderFullPage = (html, preloadedState) => {
   return `
-    <!doctype html>
+    <!DOCTYPE html>
     <html>
       <head>
-        <title>Redux Universal Example</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <title>Aloha Server-side!</title>
+        <link rel="stylesheet" type="text/css" href="/bundle.css" />
       </head>
       <body>
-        <div id="app">${html}</div>
+        <div id="root">${html}</div>
         <script>
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\x3c')}
         </script>
-        <script src="/build/bundle.js"></script>
+        <script src="/bundle.js"></script>
       </body>
     </html>
     `
