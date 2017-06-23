@@ -34,8 +34,12 @@ terminal_3 > curl http://localhost:8080
 
 ## Useful links
 
+- https://github.com/reactjs/react-router-redux/blob/master/examples/server
+- https://github.com/reactjs/redux/blob/master/examples/universal/server
+- https://github.com/reactjs/redux/blob/master/examples/universal
 - https://github.com/reactjs/redux/blob/master/docs/recipes/ServerRendering.md
 - https://facebook.github.io/react/docs/react-dom-server.html
+- https://github.com/erikras/react-redux-universal-hot-example
 - https://scotch.io/tutorials/react-on-the-server-for-beginners-build-a-universal-react-and-node-app
 - https://remysharp.com/2016/12/07/server-side-react
 - http://crypt.codemancers.com/posts/2016-09-16-react-server-side-rendering/
